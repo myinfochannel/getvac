@@ -2,79 +2,81 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-     
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-
    <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>  -->
-
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
-  
-  
 
   <title>Continous monitoring for vaccination slots in India</title>
 </head>
 <body>
      
-<div class="container-fluid">
-    <h1></h1>
-    <form style="width:400px" > 
-    <div class="panel-group">   
-        <div class="panel panel-default">  
-            <div class="panel-heading">Continous monitoring vaccine availability</div>  
-        </div> 
-  </div>
-
-<br>
-    <div class="form-group">  
+<div class="container">
+    
+    <div class="jumbotron" style="width: 500px;"  >
+        <h5>Continous Monitoring Vaccine Availability Status</h5>
+        <br>
         <!-- <label for="exampleInputEmail1">Select District</label>   -->
 
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          District Dropdown
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#" onclick="setDistrict(363, 'Pune')" data-value="Pune">Pune</a></li>
-          <li><a href="#" onclick="setDistrict(140, 'Delhi')" data-value="Delhi">Delhi</a></li>
-          <li><a href="#" onclick="setDistrict(265, 'Bangalore')" data-value="Bangalore">Bangalore</a></li>
-          <li><a href="#" onclick="setDistrict(571, 'Chennai' )" data-value="Chennai">Chennai</a></li>
-        </ul>
-      </div>
-<br>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Age Dropdown
-        <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li><a href="#" onclick="setAge(18)" data-value="18">18+</a></li>
-        <li><a href="#" onclick="setAge(45)" data-value="45">45+</a></li>
-        </ul>
-   </div>
-   <br>
-
-  <button class="btn btn-success"    onclick = "startData()">Start Monitoring</button>  
-  &nbsp;&nbsp;
-  <button class="btn btn-success"    onclick = "stopData()">Stop Monitoring</button>
-
-  <div class="alert alert-danger alert-dismissable" style="display: none"  >
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-             
+        <div class="dropdown" id="dropdownStates"   >
+            <button class="btn btn-primary dropdown-toggle" type="button" style="width: 300px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              States Dropdown
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu overflow-auto" style="position: absolute; height: 400px;">
+            </ul>
+          </div>
+        <br>
+        <div class="dropdown" id="dropdownDist" >
+            <button class="btn btn-primary dropdown-toggle" type="button" style="width: 300px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            District Dropdown
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu overflow-auto" style="position: absolute; height: 400px;" >
+            <!-- <li><a href="#" onclick="setDistrict(363)" data-value="Pune">Pune</a></li>
+            <li><a href="#" onclick="setDistrict(140)" data-value="Delhi">Delhi</a></li>
+            <li><a href="#" onclick="setDistrict(571)" data-value="Chennai">Chennai</a></li> -->
+            </ul>
         </div>
-    
-  </div >
+        <br>
+        <div class="dropdown" id="dropdownAge" style=" width: 200px; "  >
+            <button class="btn btn-primary dropdown-toggle" type="button" style="width: 300px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Age Dropdown
+            <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" >
+            <li><a href="#" onclick="setAge(18)" data-value="18">18+</a></li>
+            <li><a href="#" onclick="setAge(45)" data-value="45">45+</a></li>
+            </ul>
+        </div>
+        <br>
 
-    <div  id="mycomments" class="overflow-auto" style=" position: absolute; max-width: 400px; max-height: 200px; height: 200px; background-color: rgba(255,0,0,0.1);">
-     <p >
+        <div class="form-group">
+        <button class="btn btn-success"    onclick = "startMonitoring()">Start Monitoring</button>  
+        &nbsp; 
+        <button class="btn btn-success"    onclick = "stopMonitoring()">Stop Monitoring</button>
+        &nbsp; 
+        <button class="btn btn-success"    onclick = "clearlog()">Clear log</button>
+        </div>
 
-     </p>  
-  </div>
+        <div class="alert alert-danger alert-dismissable"  id="myalerts" style="display: none; "  >
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
 
-</form> 
+        <br>
+        <div class="form-group">
+        <span class="badge badge-primary" style=" width: 80px;  height: 32px;" ><h5><b>Status:</b></h5></span>
+        </div>
+
+        <div class="overflow-auto"   id="mylog" style=" width: 450px;  height: 300px;  ">
+            <p >
+            </p>
+        </div>
+
+    </div>
 </div> 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
