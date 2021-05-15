@@ -1,17 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="js/myscript.js"></script>  
-    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>   
-<title>Get vaccine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+     
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+
+   <!-- <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>  -->
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+  
+  
+
+  <title>Continous monitoring for vaccination slots in India</title>
 </head>
 <body>
-<h1>Get the vaccine. Add the district.</h1>
-<input type = "button" onclick = "startData()" value = "Start Data fetch"> 
-<br> 
+     
+<div class="container-fluid">
+    <h1></h1>
+    <form style="width:400px" > 
+    <div class="panel-group">   
+        <div class="panel panel-default">  
+            <div class="panel-heading">Continous monitoring vaccine availability</div>  
+        </div> 
+  </div>
+
 <br>
-<input type = "button" onclick = "stopData()" value = "Stop Data fetch"> 
-<p> </p> 
+    <div class="form-group">  
+        <!-- <label for="exampleInputEmail1">Select District</label>   -->
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          District Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#" onclick="setDistrict(363, 'Pune')" data-value="Pune">Pune</a></li>
+          <li><a href="#" onclick="setDistrict(140, 'Delhi')" data-value="Delhi">Delhi</a></li>
+          <li><a href="#" onclick="setDistrict(265, 'Bangalore')" data-value="Bangalore">Bangalore</a></li>
+          <li><a href="#" onclick="setDistrict(571, 'Chennai' )" data-value="Chennai">Chennai</a></li>
+        </ul>
+      </div>
+<br>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Age Dropdown
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><a href="#" onclick="setAge(18)" data-value="18">18+</a></li>
+        <li><a href="#" onclick="setAge(45)" data-value="45">45+</a></li>
+        </ul>
+   </div>
+   <br>
+
+  <button class="btn btn-success"    onclick = "startData()">Start Monitoring</button>  
+  &nbsp;&nbsp;
+  <button class="btn btn-success"    onclick = "stopData()">Stop Monitoring</button>
+
+  <div class="alert alert-danger alert-dismissable" style="display: none"  >
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             
+        </div>
+    
+  </div >
+
+    <div  id="mycomments" class="overflow-auto" style=" position: absolute; max-width: 400px; max-height: 200px; height: 200px; background-color: rgba(255,0,0,0.1);">
+     <p >
+
+     </p>  
+  </div>
+
+</form> 
+</div> 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="js/myscript.js"></script>  
+
 </body>
 </html>
