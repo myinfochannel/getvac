@@ -190,10 +190,12 @@ function getData () {
                     // console.log("Vaccine available: " + y["vaccine"] + " at " +  center["address"] + "for age above " + 
                     //   + y["min_age_limit"] + " on date: " + y["date"] );
                     var todayDate = new Date().toUTCString();
-                      $("p").append(todayDate+ " " + y["vaccine"] + " at " +  center["address"] + " for age above " + 
-                      + y["min_age_limit"] + " on date: " + y["date"] + ".<br>");
-                      count = count + 1 ;
-                      updateScroll();
+                    $("p").append(todayDate+ " " + y["vaccine"] + " at " +  center["address"] + " for age above " + 
+                    + y["min_age_limit"] + " on date: " + y["date"] +  " Quantity: " + y["available_capacity"]  +  ".<br>");
+                    count = count + 1 ;
+                    var x = document.getElementById("myAudio"); 
+                    x.play(); 
+                    updateScroll();
                     }
                 }
     
@@ -212,7 +214,13 @@ function getData () {
  
 }
 
-
+function playAudio() { 
+    x.play(); 
+  } 
+  
+  function pauseAudio() { 
+    x.pause(); 
+  }
 
 
  
