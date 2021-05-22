@@ -5,6 +5,9 @@
         <source src="audio/beep.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio> 
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,16 +17,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
 
-  <title>Continous monitoring for vaccination slots in India</title>
+  <title>Monitoring vaccination slots in India</title>
 </head>
 <body>
-
-   
-
 <div class="container">
     
     <div class="jumbotron" style="width: 500px;"  >
-        <h5>Continous Monitoring Vaccine Availability Status</h5>
+        <h5>Vaccine Availability Monitoring</h5>
         <br>
         <!-- <label for="exampleInputEmail1">Select District</label>   -->
 
@@ -33,6 +33,7 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu overflow-auto" style="position: absolute; height: 400px;">
+                <li><a    value=""> </a></li>
             </ul>
           </div>
         <br>
@@ -42,6 +43,7 @@
             <span class="caret"></span>
             </button>
             <ul class="dropdown-menu overflow-auto" style="position: absolute; height: 400px;" >
+                <li><a    value=""> </a></li>
             <!-- <li><a href="#" onclick="setDistrict(363)" data-value="Pune">Pune</a></li>
             <li><a href="#" onclick="setDistrict(140)" data-value="Delhi">Delhi</a></li>
             <li><a href="#" onclick="setDistrict(571)" data-value="Chennai">Chennai</a></li> -->
@@ -61,11 +63,13 @@
         <br>
 
         <div class="form-group">
-        <button class="btn btn-success"    onclick = "startMonitoring()">Start Monitoring</button>  
+        <button class="btn btn-success"    onclick = "startMonitoring()">Start</button>  
         &nbsp; 
-        <button class="btn btn-success"    onclick = "stopMonitoring()">Stop Monitoring</button>
+        <button class="btn btn-success"    onclick = "stopMonitoring()">Stop</button>
         &nbsp; 
         <button class="btn btn-success"    onclick = "clearlog()">Clear log</button>
+        &nbsp; 
+        <button class="btn btn-success"  id="AudioBtn"   onclick = "stopAudio()">Beep stop</button>
         </div>
 
         <div class="alert alert-danger alert-dismissable"  id="myalerts" style="display: none; "  >
